@@ -8,6 +8,10 @@
     "babel-register": "^6.7.2",
     "cross-env": "^1.0.7",
     "enzyme": "^2.1.0",
+    "eslint": "^2.4.0",
+    "eslint-config-airbnb": "^6.1.0",
+    "eslint-config-rackt": "^1.1.1",
+    "eslint-plugin-react": "^4.2.3",
     "expect": "^1.15.2",
     "mocha": "^2.4.5",
     "react-addons-test-utils": "^0.14.7",
@@ -15,6 +19,7 @@
   },
   "scripts": {
     "webpack": "NODE_ENV=test webpack",
+    "eslint": "eslint --config ./.eslintrc ./js/*",
     "test": "cross-env NODE_ENV=test mocha --recursive --compilers js:babel-register"
   },
   "dependencies": {
