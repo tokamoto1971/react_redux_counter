@@ -6,7 +6,9 @@
     "babel-preset-react": "^6.5.0",
     "webpack": "^1.12.14"
   },
-  "scripts": {},
+  "scripts": {
+    "webpack": "webpack"
+  },
   "dependencies": {
     "react": "^0.14.7",
     "react-dom": "^0.14.7",

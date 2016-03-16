@@ -46,8 +46,6 @@
 
 	'use strict';
 
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
@@ -60,101 +58,65 @@
 
 	var _reactRedux = __webpack_require__(169);
 
+	var _actions = __webpack_require__(180);
+
+	var _reducers = __webpack_require__(181);
+
+	var _reducers2 = _interopRequireDefault(_reducers);
+
+	var _Counter = __webpack_require__(182);
+
+	var _Counter2 = _interopRequireDefault(_Counter);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
 	// Action
-	var INCREMENT_COUNTER = {
-	  type: 'INCREMENT_COUNTER',
-	  count: 1
-	};
+	// const INCREMENT_COUNTER = {
+	//   type: 'INCREMENT_COUNTER',
+	//   count: 1
+	// };
 
-	var DECREMENT_COUNTER = {
-	  type: 'DECREMENT_COUNTER',
-	  count: -1
-	};
+	// const DECREMENT_COUNTER = {
+	//   type: 'DECREMENT_COUNTER',
+	//   count: -1
+	// };
 
 	// Reducer
-	function counter() {
-	  var state = arguments.length <= 0 || arguments[0] === undefined ? { count: 0 } : arguments[0];
-	  var action = arguments[1];
-
-	  var count = state.count;
-	  switch (action.type) {
-	    case 'INCREMENT_COUNTER':
-	      return { count: count + action.count };
-	    case 'DECREMENT_COUNTER':
-	      return { count: count + action.count };
-	    default:
-	      return state;
-	  }
-	}
+	// function counter (state = {count: 0}, action) {
+	//   let count = state.count;
+	//   switch (action.type) {
+	//     case 'INCREMENT_COUNTER':
+	//       return {count: count + action.count};
+	//     case 'DECREMENT_COUNTER':
+	//       return {count: count + action.count};
+	//     default:
+	//       return state;
+	//   }
+	// }
 
 	// Store
-	var store = (0, _redux.createStore)(counter);
+	var store = (0, _redux.createStore)(_reducers2.default);
 
 	// Component
+	// class CounterComponent extends React.Component {
+	//   render () {
+	//     const { count, onClickPlus, onClickMinus } = this.props;
+	//     return (
+	//       <div>
+	//         <p><span>Count: {count}</span></p>
+	//         <div>
+	//           <button onClick={onClickPlus}>+1</button>
+	//           <button onClick={onClickMinus}>-1</button>
+	//         </div>
+	//       </div>
+	//     );
+	//   }
+	// }
 
-	var CounterComponent = function (_React$Component) {
-	  _inherits(CounterComponent, _React$Component);
-
-	  function CounterComponent() {
-	    _classCallCheck(this, CounterComponent);
-
-	    return _possibleConstructorReturn(this, Object.getPrototypeOf(CounterComponent).apply(this, arguments));
-	  }
-
-	  _createClass(CounterComponent, [{
-	    key: 'render',
-	    value: function render() {
-	      var _props = this.props;
-	      var count = _props.count;
-	      var onClickPlus = _props.onClickPlus;
-	      var onClickMinus = _props.onClickMinus;
-
-	      return _react2.default.createElement(
-	        'div',
-	        null,
-	        _react2.default.createElement(
-	          'p',
-	          null,
-	          _react2.default.createElement(
-	            'span',
-	            null,
-	            'Count: ',
-	            count
-	          )
-	        ),
-	        _react2.default.createElement(
-	          'div',
-	          null,
-	          _react2.default.createElement(
-	            'button',
-	            { onClick: onClickPlus },
-	            '+1'
-	          ),
-	          _react2.default.createElement(
-	            'button',
-	            { onClick: onClickMinus },
-	            '-1'
-	          )
-	        )
-	      );
-	    }
-	  }]);
-
-	  return CounterComponent;
-	}(_react2.default.Component);
-
-	CounterComponent.propTypes = {
-	  count: _react.PropTypes.number.isRequired,
-	  onClickPlus: _react.PropTypes.func.isRequired
-	};
+	// CounterComponent.propTypes = {
+	//   count: PropTypes.number.isRequired,
+	//   onClickPlus: PropTypes.func.isRequired
+	// };
 
 	// Containers
 	function mapStateToProps(state) {
@@ -166,15 +128,15 @@
 	function mapDispatchToProps(dispatch) {
 	  return {
 	    onClickPlus: function onClickPlus() {
-	      return dispatch(INCREMENT_COUNTER);
+	      return dispatch((0, _actions.increment)());
 	    },
 	    onClickMinus: function onClickMinus() {
-	      return dispatch(DECREMENT_COUNTER);
+	      return dispatch((0, _actions.decrement)());
 	    }
 	  };
 	}
 
-	var App = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(CounterComponent);
+	var App = (0, _reactRedux.connect)(mapStateToProps, mapDispatchToProps)(_Counter2.default);
 
 	// main
 	_reactDom2.default.render(_react2.default.createElement(
@@ -21236,6 +21198,139 @@
 	module.exports = invariant;
 
 	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
+
+/***/ },
+/* 180 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	    value: true
+	});
+	exports.increment = increment;
+	exports.decrement = decrement;
+	function increment() {
+	    return {
+	        type: 'INCREMENT_COUNTER',
+	        count: 1
+	    };
+	}
+
+	function decrement() {
+	    return {
+	        type: 'DECREMENT_COUNTER',
+	        count: -1
+	    };
+	}
+
+/***/ },
+/* 181 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = counter;
+	function counter() {
+	  var state = arguments.length <= 0 || arguments[0] === undefined ? { count: 0 } : arguments[0];
+	  var action = arguments[1];
+
+	  var count = state.count;
+	  switch (action.type) {
+	    case 'INCREMENT_COUNTER':
+	      return { count: count + action.count };
+	    case 'DECREMENT_COUNTER':
+	      return { count: count + action.count };
+	    default:
+	      return state;
+	  }
+	}
+
+/***/ },
+/* 182 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var CounterComponent = function (_Component) {
+	  _inherits(CounterComponent, _Component);
+
+	  function CounterComponent() {
+	    _classCallCheck(this, CounterComponent);
+
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(CounterComponent).apply(this, arguments));
+	  }
+
+	  _createClass(CounterComponent, [{
+	    key: 'render',
+	    value: function render() {
+	      var _props = this.props;
+	      var count = _props.count;
+	      var onClickPlus = _props.onClickPlus;
+	      var onClickMinus = _props.onClickMinus;
+
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(
+	          'p',
+	          null,
+	          _react2.default.createElement(
+	            'span',
+	            null,
+	            'Count: ',
+	            count
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          _react2.default.createElement(
+	            'button',
+	            { onClick: onClickPlus },
+	            '+1'
+	          ),
+	          _react2.default.createElement(
+	            'button',
+	            { onClick: onClickMinus },
+	            '-1'
+	          )
+	        )
+	      );
+	    }
+	  }]);
+
+	  return CounterComponent;
+	}(_react.Component);
+
+	CounterComponent.propTypes = {
+	  count: _react.PropTypes.number.isRequired,
+	  onClickPlus: _react.PropTypes.func.isRequired,
+	  onClickMinus: _react.PropTypes.func.isRequired
+	};
+
+	exports.default = CounterComponent;
 
 /***/ }
 /******/ ]);

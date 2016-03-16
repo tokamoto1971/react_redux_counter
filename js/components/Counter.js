@@ -1,52 +1,25 @@
 import React, { Component, PropTypes } from 'react'
 
-class Counter extends Component {
-  constructor(props) {
-    super(props)
-    this.incrementAsync = this.incrementAsync.bind(this)
-    this.incrementIfOdd = this.incrementIfOdd.bind(this)
-  }
 
-  incrementIfOdd() {
-    if (this.props.value % 2 !== 0) {
-      this.props.onIncrement()
-    }
-  }
-
-  incrementAsync() {
-    setTimeout(this.props.onIncrement, 1000)
-  }
-
-  render() {
-    const { value, onIncrement, onDecrement } = this.props
+class CounterComponent extends Component {
+  render () {
+    const { count, onClickPlus, onClickMinus } = this.props;
     return (
-      <p>
-        Clicked: {value} times
-        {' '}
-        <button onClick={onIncrement}>
-          +
-        </button>
-        {' '}
-        <button onClick={onDecrement}>
-          -
-        </button>
-        {' '}
-        <button onClick={this.incrementIfOdd}>
-          Increment if odd
-        </button>
-        {' '}
-        <button onClick={this.incrementAsync}>
-          Increment async
-        </button>
-      </p>
-    )
+      <div>
+        <p><span>Count: {count}</span></p>
+        <div>
+          <button onClick={onClickPlus}>+1</button>
+          <button onClick={onClickMinus}>-1</button>
+        </div>
+      </div>
+    );
   }
 }
 
-Counter.propTypes = {
-  value: PropTypes.number.isRequired,
-  onIncrement: PropTypes.func.isRequired,
-  onDecrement: PropTypes.func.isRequired
-}
+CounterComponent.propTypes = {
+  count: PropTypes.number.isRequired,
+  onClickPlus: PropTypes.func.isRequired,
+  onClickMinus: PropTypes.func.isRequired
+};
 
-export default Counter
+export default CounterComponent

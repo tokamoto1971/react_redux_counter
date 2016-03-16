@@ -1,10 +1,11 @@
-export default function counter(state = 0, action) {
+export default function counter (state = {count: 0}, action) {
+  let count = state.count;
   switch (action.type) {
-    case 'INCREMENT':
-      return state + 1
-    case 'DECREMENT':
-      return state - 1
+    case 'INCREMENT_COUNTER':
+      return {count: count + action.count};
+    case 'DECREMENT_COUNTER':
+      return {count: count + action.count};
     default:
-      return state
+      return state;
   }
 }
