@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { createStore } from 'redux';
 import { Provider, connect } from 'react-redux';
 
-import { increment, decrement } from './actions'
+import { increment, decrement } from './actions/ActionCreators'
 import counter from './reducers'
 import CounterComponent from './components/Counter';
 

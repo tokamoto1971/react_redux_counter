@@ -58,13 +58,13 @@
 
 	var _reactRedux = __webpack_require__(169);
 
-	var _actions = __webpack_require__(180);
+	var _ActionCreators = __webpack_require__(180);
 
-	var _reducers = __webpack_require__(193);
+	var _reducers = __webpack_require__(194);
 
 	var _reducers2 = _interopRequireDefault(_reducers);
 
-	var _Counter = __webpack_require__(194);
+	var _Counter = __webpack_require__(195);
 
 	var _Counter2 = _interopRequireDefault(_Counter);
 
@@ -83,10 +83,10 @@
 	function mapDispatchToProps(dispatch) {
 	  return {
 	    onClickPlus: function onClickPlus() {
-	      return dispatch((0, _actions.increment)(1));
+	      return dispatch((0, _ActionCreators.increment)(1));
 	    },
 	    onClickMinus: function onClickMinus() {
-	      return dispatch((0, _actions.decrement)(1));
+	      return dispatch((0, _ActionCreators.decrement)(1));
 	    }
 	  };
 	}
@@ -21163,31 +21163,15 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.decrement = exports.increment = exports.DECREMENT = exports.INCREMENT = undefined;
+	exports.decrement = exports.increment = undefined;
 
 	var _reduxActions = __webpack_require__(181);
 
-	// ActionType
-	var INCREMENT = exports.INCREMENT = 'INCREMENT';
-	var DECREMENT = exports.DECREMENT = 'DECREMENT';
+	var _ActionTypes = __webpack_require__(193);
 
 	// Action Creator
-	var increment = exports.increment = (0, _reduxActions.createAction)(INCREMENT);
-	var decrement = exports.decrement = (0, _reduxActions.createAction)(DECREMENT);
-
-	// export function increment() {
-	//   return {
-	//       type: 'INCREMENT_COUNTER',
-	//       count: 1
-	//   };
-	// }
-
-	// export function decrement() {
-	//   return {
-	//       type: 'DECREMENT_COUNTER',
-	//       count: -1
-	//   };
-	// }
+	var increment = exports.increment = (0, _reduxActions.createAction)(_ActionTypes.INCREMENT);
+	var decrement = exports.decrement = (0, _reduxActions.createAction)(_ActionTypes.DECREMENT);
 
 /***/ },
 /* 181 */
@@ -22143,6 +22127,19 @@
 
 /***/ },
 /* 193 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	// ActionType
+	var INCREMENT = exports.INCREMENT = 'INCREMENT';
+	var DECREMENT = exports.DECREMENT = 'DECREMENT';
+
+/***/ },
+/* 194 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22153,26 +22150,21 @@
 
 	var _reduxActions = __webpack_require__(181);
 
-	var _actions = __webpack_require__(180);
+	var _ActionTypes = __webpack_require__(193);
 
 	var counter = (0, _reduxActions.handleActions)({
 	  INCREMENT: function INCREMENT(state, action) {
-	    return {
-	      count: state.count + action.payload
-	    };
+	    return { count: state.count + action.payload };
 	  },
-
 	  DECREMENT: function DECREMENT(state, action) {
-	    return {
-	      count: state.count - action.payload
-	    };
+	    return { count: state.count - action.payload };
 	  }
 	}, { count: 0 });
 
 	exports.default = counter;
 
 /***/ },
-/* 194 */
+/* 195 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
