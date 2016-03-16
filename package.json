@@ -9,13 +9,12 @@
     "cross-env": "^1.0.7",
     "enzyme": "^2.1.0",
     "expect": "^1.15.2",
-    "express": "^4.13.4",
     "mocha": "^2.4.5",
     "react-addons-test-utils": "^0.14.7",
     "webpack": "^1.12.14"
   },
   "scripts": {
-    "webpack": "webpack",
+    "webpack": "NODE_ENV=test webpack",
     "test": "cross-env NODE_ENV=test mocha --recursive --compilers js:babel-register"
   },
   "dependencies": {
