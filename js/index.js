@@ -11,20 +11,20 @@ import CounterComponent from './components/Counter';
 const store = createStore(counter);
 
 // Containers
-function mapStateToProps (state) {
+function mapStateToProps(state) {
   return {
-    count: state.count
+    count: state.count,
   };
 }
 
-function mapDispatchToProps (dispatch) {
+function mapDispatchToProps(dispatch) {
   return {
     onClickPlus: () => dispatch(increment(1)),
-    onClickMinus: () => dispatch(decrement(1))
+    onClickMinus: () => dispatch(decrement(1)),
   };
 }
 
-let App = connect(
+const App = connect(
   mapStateToProps,
   mapDispatchToProps
 )(CounterComponent);

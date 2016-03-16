@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 
 
 class CounterComponent extends Component {
-  render () {
+  render() {
     const { count, onClickPlus, onClickMinus } = this.props;
     return (
       <div>
@@ -17,9 +17,9 @@ class CounterComponent extends Component {
 }
 
 CounterComponent.propTypes = {
-  count       : PropTypes.number.isRequired,
-  onClickPlus : PropTypes.func.isRequired,
-  onClickMinus: PropTypes.func.isRequired
+  count: PropTypes.number.isRequired,
+  onClickPlus: PropTypes.func.isRequired,
+  onClickMinus: PropTypes.func.isRequired,
 };
 
 export default CounterComponent
