@@ -1,14 +1,15 @@
 import React, { PropTypes } from 'react';
 import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
+import createFinalStore from './store/configureStore';
 import { Provider, connect } from 'react-redux';
 
-import { increment, decrement } from './actions/ActionCreators'
-import counter from './reducers'
+import { increment, decrement, incrementAsync } from './actions/ActionCreators'
 import CounterComponent from './components/Counter';
 
+
 // Store
-const store = createStore(counter);
+const store = createFinalStore();
+
 
 // Containers
 function mapStateToProps(state) {
@@ -18,9 +19,11 @@ function mapStateToProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
+  const payload = 1
   return {
-    onClickPlus: () => dispatch(increment(1)),
-    onClickMinus: () => dispatch(decrement(1)),
+    onClickPlus: () => dispatch(increment(payload)),
+    onClickMinus: () => dispatch(decrement(payload)),
+    onClickPlusAsync: () => dispatch(incrementAsync(payload)),
   };
 }
 

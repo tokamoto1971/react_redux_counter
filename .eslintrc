@@ -1,26 +1,16 @@
 {
   "parserOptions": {
     "ecmaVeriosn": 6,
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "jsx": true
-    }
+    "sourceType": "module"
   },
   "ecmaFeatures": {
-        "jsx": true,
-        "modules": true
-    },
-  // eslint-config-racktの設定を取り込む
-  // 2016/3/13追記
-  // racktはもう古いらしいのでairbnbに変更
-  // "extends": "rackt", 
+    "jsx": true,
+    "modules": true
+  },
   "extends": "airbnb",
-  // eslint-plugin-reactで定義されているルールを取り込む
   "plugins": [
     "react"
   ],
-  // 2016/3/8 追記
-  // eslintかけるとERRORがでる対処
   "rules": {
     "semi": 0,
     "no-var": 0,
