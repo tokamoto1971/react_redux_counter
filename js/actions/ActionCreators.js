@@ -1,5 +1,5 @@
 import { createAction } from 'redux-actions';
-import { INCREMENT, DECREMENT, INCREMENT_ASYNC } from './ActionTypes';
+import { INCREMENT, DECREMENT } from './ActionTypes';
 
 // Action Creator
 export const increment = createAction(INCREMENT);
