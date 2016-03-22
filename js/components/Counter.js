@@ -18,9 +18,9 @@ class CounterComponent extends Component {
 }
 
 CounterComponent.propTypes = {
-  count: PropTypes.number.isRequired,
-  onClickPlus: PropTypes.func.isRequired,
-  onClickMinus: PropTypes.func.isRequired,
+  count           : PropTypes.number.isRequired,
+  onClickPlus     : PropTypes.func.isRequired,
+  onClickMinus    : PropTypes.func.isRequired,
   onClickPlusAsync: PropTypes.func.isRequired,
 };
 

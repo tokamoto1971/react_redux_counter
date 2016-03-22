@@ -26,3 +26,7 @@ http://qiita.com/cortyuming/items/bd82886ae2ec381e6edd
 2016年から始めるフロントサイド~環境構築編~
 
 http://qiita.com/rglay/items/a0680b111061fc56164a
+
+Thunk に関してはこのへんを参考にした。
+
+http://takayukii.me/post/20160122426

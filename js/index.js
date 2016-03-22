@@ -21,9 +21,9 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   const payload = 1
   return {
-    onClickPlus: () => dispatch(increment(payload)),
-    onClickMinus: () => dispatch(decrement(payload)),
-    onClickPlusAsync: () => dispatch(incrementAsync(payload)),
+    onClickPlus: ()       => dispatch(increment(payload)),
+    onClickMinus: ()      => dispatch(decrement(payload)),
+    onClickPlusAsync: ()  => dispatch(incrementAsync(payload)),
   };
 }
 
