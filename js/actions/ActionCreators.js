@@ -6,10 +6,8 @@ export const increment = createAction(INCREMENT);
 export const decrement = createAction(DECREMENT);
 
 //  非同期に increment する。
-export const incrementAsync = (payload) => {
-  return (dispatch, getState) => {
-    setTimeout(() => {
-      dispatch(increment(payload))
-    }, 1000)
-  }
+export const incrementAsync = (payload) => (dispatch, getState) => {
+  setTimeout(() => {
+    dispatch(increment(payload))
+  }, 1000)
 }
