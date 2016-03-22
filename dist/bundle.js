@@ -89,6 +89,9 @@
 	    },
 	    onClickPlusAsync: function onClickPlusAsync() {
 	      return dispatch((0, _ActionCreators.incrementAsync)(payload));
+	    },
+	    onClickMinusAsync: function onClickMinusAsync() {
+	      return dispatch((0, _ActionCreators.decrementAsync)(payload));
 	    }
 	  };
 	}
@@ -22443,7 +22446,7 @@
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.incrementAsync = exports.decrement = exports.increment = undefined;
+	exports.decrementAsync = exports.incrementAsync = exports.decrement = exports.increment = undefined;
 
 	var _reduxActions = __webpack_require__(172);
 
@@ -22458,6 +22461,14 @@
 	  return function (dispatch, getState) {
 	    setTimeout(function () {
 	      dispatch(increment(payload));
+	    }, 1000);
+	  };
+	};
+	//  非同期に increment する。
+	var decrementAsync = exports.decrementAsync = function decrementAsync(payload) {
+	  return function (dispatch, getState) {
+	    setTimeout(function () {
+	      dispatch(decrement(payload));
 	    }, 1000);
 	  };
 	};
@@ -22483,6 +22494,7 @@
 	  var onClickPlus = _ref.onClickPlus;
 	  var onClickMinus = _ref.onClickMinus;
 	  var onClickPlusAsync = _ref.onClickPlusAsync;
+	  var onClickMinusAsync = _ref.onClickMinusAsync;
 	  return _react2.default.createElement(
 	    'div',
 	    null,
@@ -22513,6 +22525,11 @@
 	        'button',
 	        { onClick: onClickPlusAsync },
 	        '+1(Async)'
+	      ),
+	      _react2.default.createElement(
+	        'button',
+	        { onClick: onClickMinusAsync },
+	        '-1(Async)'
 	      )
 	    )
 	  );
@@ -22522,7 +22539,8 @@
 	  count: _react.PropTypes.number.isRequired,
 	  onClickPlus: _react.PropTypes.func.isRequired,
 	  onClickMinus: _react.PropTypes.func.isRequired,
-	  onClickPlusAsync: _react.PropTypes.func.isRequired
+	  onClickPlusAsync: _react.PropTypes.func.isRequired,
+	  onClickMinusAsync: _react.PropTypes.func.isRequired
 	};
 
 	exports.default = CounterComponent;

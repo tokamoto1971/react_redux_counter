@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import createFinalStore from './store/configureStore';
 import { Provider, connect } from 'react-redux';
 
-import { increment, decrement, incrementAsync } from './actions/ActionCreators'
+import { increment, decrement, incrementAsync, decrementAsync } from './actions/ActionCreators'
 import CounterComponent from './components/Counter';
 
 
@@ -24,6 +24,7 @@ function mapDispatchToProps(dispatch) {
     onClickPlus: () => dispatch(increment(payload)),
     onClickMinus: () => dispatch(decrement(payload)),
     onClickPlusAsync: () => dispatch(incrementAsync(payload)),
+    onClickMinusAsync: () => dispatch(decrementAsync(payload)),
   };
 }
 
