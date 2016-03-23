@@ -20,7 +20,7 @@
   },
   "scripts": {
     "webpack": "NODE_ENV=test webpack --progress --color",
-    "eslint": "eslint --config ./.eslintrc ./js/*",
+    "eslint": "eslint --config ./.eslintrc ./js/* ./test/*",
     "test": "cross-env NODE_ENV=test mocha --recursive --compilers js:babel-register"
   },
   "dependencies": {

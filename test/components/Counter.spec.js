@@ -8,17 +8,17 @@ function setup(count = 0) {
     onClickPlus: expect.createSpy(),
     onClickMinus: expect.createSpy(),
     onClickPlusAsync: expect.createSpy(),
-    onClickMinusAsync: expect.createSpy()
+    onClickMinusAsync: expect.createSpy(),
   }
   const component = shallow(
     <Counter count={count} {...actions} />
   )
 
   return {
-    component: component,
-    actions: actions,
+    component,
+    actions,
     buttons: component.find('button'),
-    p: component.find('span')
+    p: component.find('span'),
   }
 }
 
