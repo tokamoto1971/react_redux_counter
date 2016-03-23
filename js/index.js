@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import createFinalStore from './store/configureStore';
 import { Provider, connect } from 'react-redux';

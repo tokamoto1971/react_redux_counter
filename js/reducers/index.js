@@ -1,5 +1,4 @@
-import { handleActions } from 'redux-actions';
-import { INCREMENT, DECREMENT } from '../actions/ActionTypes';
+import { handleActions } from 'redux-actions'
 
 const counter = handleActions({
   INCREMENT: (state, action) => ({ count: state.count + action.payload }),

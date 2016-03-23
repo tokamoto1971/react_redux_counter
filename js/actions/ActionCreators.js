@@ -7,7 +7,6 @@ export const decrement = createAction(DECREMENT);
 
 const delay = 1000;
 
-
 //  Promise を用いて非同期にタイマーをセットする。
 function setTimeoutAsync(d) {
   return new Promise((resolve, reject) => (
