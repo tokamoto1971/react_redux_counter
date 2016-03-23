@@ -1,19 +1,39 @@
+import expect from 'expect'
+import { incrementAsync, decrementAsync } from '../../js/actions/ActionCreators'
+import { INCREMENT, DECREMENT } from '../../js/actions/ActionTypes';
+
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
-import * as actions from '../../js/actions/ActionCreators'
-import * as types from '../../js/actions/ActionTypes'
 
 const middlewares = [ thunk ]
 const mockStore = configureMockStore(middlewares)
 
 describe('async actions', () => {
 
-  it('creates FETCH_TODOS_SUCCESS when fetching todos has been done', (done) => {
+  it('{type: INCREMENT, payload: 123} が約1000ms後に返されるはず', (done) => {
 
-    const expectedActions = [
-      { type: types.INCREMENT },
-    ]
-    const store = mockStore({ count: 0 }, expectedActions, done)
-    store.dispatch(actions.incrementAsync(1))
+    const store = mockStore()
+
+    store.dispatch(incrementAsync(123))
+    .then(() => {
+      const actions = store.getActions()
+      expect(actions).toEqual([{ type: INCREMENT, payload: 123 }])
+    })
+    .then(done)
+    .catch(done)
+  })
+
+  it('{type: DECREMENT, payload: 456} が約1000ms後に返されるはず', (done) => {
+
+    const store = mockStore()
+
+    store.dispatch(decrementAsync(456))
+    .then(() => {
+      const actions = store.getActions()
+      expect(actions).toEqual([{ type: DECREMENT, payload: 456 }])
+    })
+    .then(done)
+    .catch(done)
+
   })
 })
